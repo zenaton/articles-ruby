@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require './app/boot'
+require 'securerandom'
+
+Alphabet.new(SecureRandom.uuid).dispatch

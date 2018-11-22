@@ -1,0 +1,26 @@
+version: "3"
+services:
+  client:
+    environment:
+      ZENATON_APP_ENV: ${ZENATON_APP_ENV}
+      ZENATON_APP_ID: ${ZENATON_APP_ID}
+      ZENATON_API_TOKEN: ${ZENATON_API_TOKEN}
+    build:
+      context: .
+      dockerfile: docker/client/Dockerfile
+    volumes:
+      - client_bundle:/usr/local/bundle
+      - .:/app
+  worker:
+    environment:
+      ZENATON_APP_ENV: ${ZENATON_APP_ENV}
+      ZENATON_APP_ID: ${ZENATON_APP_ID}
+      ZENATON_API_TOKEN: ${ZENATON_API_TOKEN}
+    build:
+      context: .
+      dockerfile: docker/worker/Dockerfile
+    volumes:
+      - worker_bundle:/usr/local/bundle
+volumes:
+  client_bundle:
+  worker_bundle:

@@ -1,0 +1,12 @@
+#!/bin/sh
+
+set -e
+
+# Make sure dependencies are installed
+bundle check || bundle install
+
+# Start zenaton agent
+zenaton start
+zenaton listen --app_id="$ZENATON_APP_ID" --ruby --client
+
+./bin/launch_workflow
